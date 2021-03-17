@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_API\\Overtime_API.csproj",
-      "projectName": "Overtime_API",
-      "projectPath": "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_API\\Overtime_API.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_MVC\\Overtime_MVC.csproj",
+      "projectName": "Overtime_MVC",
+      "projectPath": "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_MVC\\Overtime_MVC.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_API\\obj\\",
+      "outputPath": "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_MVC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
