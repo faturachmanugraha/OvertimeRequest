@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\Bootcamp\\Overtime\\Overtime_API\\Overtime_API\\Overtime_API.csproj": {}
+    "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_API\\Overtime_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\Bootcamp\\Overtime\\Overtime_API\\Overtime_API\\Overtime_API.csproj": {
+    "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_API\\Overtime_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\Bootcamp\\Overtime\\Overtime_API\\Overtime_API\\Overtime_API.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_API\\Overtime_API.csproj",
         "projectName": "Overtime_API",
-        "projectPath": "C:\\Users\\user\\Documents\\Bootcamp\\Overtime\\Overtime_API\\Overtime_API\\Overtime_API.csproj",
+        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_API\\Overtime_API.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\Bootcamp\\Overtime\\Overtime_API\\Overtime_API\\obj\\",
+        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -38,7 +38,19 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.78, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.13, )"
+            },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
               "version": "[5.0.4, )"
             },
@@ -51,6 +63,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.1, )"
             }
           },
           "imports": [

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\Bootcamp\\Overtime\\Overtime_API\\Overtime_MVC\\Overtime_MVC.csproj": {}
+    "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_MVC\\Overtime_MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\Bootcamp\\Overtime\\Overtime_API\\Overtime_MVC\\Overtime_MVC.csproj": {
+    "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_MVC\\Overtime_MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\Bootcamp\\Overtime\\Overtime_API\\Overtime_MVC\\Overtime_MVC.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_MVC\\Overtime_MVC.csproj",
         "projectName": "Overtime_MVC",
-        "projectPath": "C:\\Users\\user\\Documents\\Bootcamp\\Overtime\\Overtime_API\\Overtime_MVC\\Overtime_MVC.csproj",
+        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_MVC\\Overtime_MVC.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\Bootcamp\\Overtime\\Overtime_API\\Overtime_MVC\\obj\\",
+        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\OvertimeRequest\\Overtime_API\\Overtime_MVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",

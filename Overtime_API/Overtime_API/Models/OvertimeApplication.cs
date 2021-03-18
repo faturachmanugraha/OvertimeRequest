@@ -14,7 +14,6 @@ namespace Overtime_API.Models
         public int OvertimeApplicationID { get; set; }
 
         [Required(ErrorMessage = "Must be filled")]
-        public string NIK { get; set; }
 
         public int OvertimeID { get; set; }
 
@@ -27,7 +26,7 @@ namespace Overtime_API.Models
         public int StatusManager { get; set; }
         public int StatusFinance { get; set; }
 
-        public virtual ICollection<Limitation> Limitations { get; set; }
+
         public virtual ICollection<Activity> Activities { get; set; }
         public virtual OvertimeData OvertimeData { get; set; }
     }

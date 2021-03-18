@@ -16,6 +16,9 @@ namespace Overtime_API.Models
         [Required(ErrorMessage = "Must be filled")]
         public string NIK { get; set; }
 
+
+
+
         public virtual ICollection<OvertimeApplication> OvertimeApplication { get; set; }
 
         public virtual Employee Employee { get; set; }

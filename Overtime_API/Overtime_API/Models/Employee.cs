@@ -35,13 +35,11 @@ namespace Overtime_API.Models
         public int Salary { get; set; }
         public int PositionID { get; set; }
 
-#nullable enable
-        public string? NIKManager { get; set; }
-#nullable disable
+
 
         public int ClientID { get; set; }
         public int DepartmentID { get; set; }
-        public int OvertimeID { get; set; }
+
 
 
         public virtual OvertimeData OvertimeData { get; set; }
@@ -50,8 +48,6 @@ namespace Overtime_API.Models
         public virtual Department Department { get; set; }
         public virtual Account Account { get; set; }
 
-        public virtual Employee ParentEmployee { get; set; }
-        public virtual ICollection<Employee> ChildEmployee { get; set; }
 
     }
 }

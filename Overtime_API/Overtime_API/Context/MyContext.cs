@@ -20,7 +20,7 @@ namespace Overtime_API.Context
         public DbSet<Client> Clients { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Limitation> Limitations { get; set; }
+ 
         public DbSet<OvertimeApplication> OvertimeApplications { get; set; }
         public DbSet<OvertimeData> OvertimeDatas { get; set; }
         public DbSet<Position> Positions { get; set; }
@@ -28,6 +28,12 @@ namespace Overtime_API.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Employee>()
+                .HasAlternateKey(e => e.Email);
+
+            modelBuilder.Entity<Employee>()
+                .HasAlternateKey(e => e.PhoneNumber);
+
             modelBuilder.Entity<AccountRole>()
                 .HasKey(ar => new { ar.AccountNIK, ar.RoleID });
 
@@ -46,10 +52,7 @@ namespace Overtime_API.Context
                 .WithOne(account => account.Employee)
                 .HasForeignKey<Account>(account => account.NIK);
 
-            modelBuilder.Entity<Employee>()
-                .HasOne(employee => employee.ParentEmployee)
-                .WithMany(employees => employees.ChildEmployee)
-                .HasForeignKey(employee => employee.NIKManager);
+
 
             modelBuilder.Entity<Employee>()
                .HasOne(employee => employee.Position)
@@ -76,10 +79,6 @@ namespace Overtime_API.Context
                .WithMany(od => od.OvertimeApplication)
                .HasForeignKey(oa => oa.OvertimeID);
 
-            modelBuilder.Entity<Limitation>()
-               .HasOne(limitation => limitation.OvertimeApplication)
-               .WithMany(oa => oa.Limitations)
-               .HasForeignKey(limitation => limitation.OvertimeApplicationID);
 
             modelBuilder.Entity<Activity>()
                .HasOne(activity => activity.OvertimeApplication)
