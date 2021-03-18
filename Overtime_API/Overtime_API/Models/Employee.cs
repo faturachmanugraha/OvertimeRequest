@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Overtime_API.Models
@@ -41,11 +42,15 @@ namespace Overtime_API.Models
         public int DepartmentID { get; set; }
 
 
-
+        [JsonIgnore]
         public virtual OvertimeData OvertimeData { get; set; }
+        [JsonIgnore]
         public virtual Position Position { get; set; }
+        [JsonIgnore]
         public virtual Client Client { get; set; }
+        [JsonIgnore]
         public virtual Department Department { get; set; }
+        [JsonIgnore]
         public virtual Account Account { get; set; }
 
 

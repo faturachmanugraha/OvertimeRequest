@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Overtime_API.Models
@@ -26,8 +27,9 @@ namespace Overtime_API.Models
         public int StatusManager { get; set; }
         public int StatusFinance { get; set; }
 
-
+        [JsonIgnore]
         public virtual ICollection<Activity> Activities { get; set; }
+        [JsonIgnore]
         public virtual OvertimeData OvertimeData { get; set; }
     }
 }

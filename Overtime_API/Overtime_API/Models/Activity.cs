@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Overtime_API.Models
@@ -28,6 +29,7 @@ namespace Overtime_API.Models
 
         public int OvertimeApplicationID { get; set; }
 
+        [JsonIgnore]
         public virtual OvertimeApplication OvertimeApplication { get; set; }
     }
 }
