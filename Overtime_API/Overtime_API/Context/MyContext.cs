@@ -46,11 +46,14 @@ namespace Overtime_API.Context
                 .WithOne(account => account.Employee)
                 .HasForeignKey<Account>(account => account.NIK);
 
+<<<<<<< Updated upstream
             modelBuilder.Entity<Employee>()
                 .HasOne(employee => employee.ParentEmployee)
                 .WithMany(employees => employees.ChildEmployee)
                 .HasForeignKey(employee => employee.NIKManager);
 
+=======
+>>>>>>> Stashed changes
             modelBuilder.Entity<Employee>()
                .HasOne(employee => employee.Position)
                .WithMany(position => position.Employees)

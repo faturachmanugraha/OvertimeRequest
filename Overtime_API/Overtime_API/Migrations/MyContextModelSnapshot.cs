@@ -133,7 +133,11 @@ namespace Overtime_API.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
+<<<<<<< Updated upstream
                         .HasColumnType("nvarchar(max)");
+=======
+                        .HasColumnType("nvarchar(450)");
+>>>>>>> Stashed changes
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -143,6 +147,7 @@ namespace Overtime_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+<<<<<<< Updated upstream
                     b.Property<string>("NIKManager")
                         .HasColumnType("nvarchar(450)");
 
@@ -152,6 +157,14 @@ namespace Overtime_API.Migrations
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+=======
+                    b.Property<string>("ManagerNIK")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+>>>>>>> Stashed changes
 
                     b.Property<int>("PositionID")
                         .HasColumnType("int");
@@ -161,17 +174,29 @@ namespace Overtime_API.Migrations
 
                     b.HasKey("NIK");
 
+<<<<<<< Updated upstream
+=======
+                    b.HasAlternateKey("Email");
+
+                    b.HasAlternateKey("PhoneNumber");
+
+>>>>>>> Stashed changes
                     b.HasIndex("ClientID");
 
                     b.HasIndex("DepartmentID");
 
+<<<<<<< Updated upstream
                     b.HasIndex("NIKManager");
+=======
+                    b.HasIndex("ManagerNIK");
+>>>>>>> Stashed changes
 
                     b.HasIndex("PositionID");
 
                     b.ToTable("TB_M_Employee");
                 });
 
+<<<<<<< Updated upstream
             modelBuilder.Entity("Overtime_API.Models.Limitation", b =>
                 {
                     b.Property<int>("LimitationID")
@@ -197,6 +222,8 @@ namespace Overtime_API.Migrations
                     b.ToTable("TB_M_Limitation");
                 });
 
+=======
+>>>>>>> Stashed changes
             modelBuilder.Entity("Overtime_API.Models.OvertimeApplication", b =>
                 {
                     b.Property<int>("OvertimeApplicationID")
@@ -204,10 +231,13 @@ namespace Overtime_API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+<<<<<<< Updated upstream
                     b.Property<string>("NIK")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+=======
+>>>>>>> Stashed changes
                     b.Property<DateTime>("OvertimeDay")
                         .HasColumnType("datetime2");
 
@@ -336,9 +366,15 @@ namespace Overtime_API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+<<<<<<< Updated upstream
                     b.HasOne("Overtime_API.Models.Employee", "ParentEmployee")
                         .WithMany("ChildEmployee")
                         .HasForeignKey("NIKManager");
+=======
+                    b.HasOne("Overtime_API.Models.Employee", "Manager")
+                        .WithMany()
+                        .HasForeignKey("ManagerNIK");
+>>>>>>> Stashed changes
 
                     b.HasOne("Overtime_API.Models.Position", "Position")
                         .WithMany("Employees")
@@ -350,11 +386,16 @@ namespace Overtime_API.Migrations
 
                     b.Navigation("Department");
 
+<<<<<<< Updated upstream
                     b.Navigation("ParentEmployee");
+=======
+                    b.Navigation("Manager");
+>>>>>>> Stashed changes
 
                     b.Navigation("Position");
                 });
 
+<<<<<<< Updated upstream
             modelBuilder.Entity("Overtime_API.Models.Limitation", b =>
                 {
                     b.HasOne("Overtime_API.Models.OvertimeApplication", "OvertimeApplication")
@@ -366,6 +407,8 @@ namespace Overtime_API.Migrations
                     b.Navigation("OvertimeApplication");
                 });
 
+=======
+>>>>>>> Stashed changes
             modelBuilder.Entity("Overtime_API.Models.OvertimeApplication", b =>
                 {
                     b.HasOne("Overtime_API.Models.OvertimeData", "OvertimeData")
@@ -407,16 +450,22 @@ namespace Overtime_API.Migrations
                 {
                     b.Navigation("Account");
 
+<<<<<<< Updated upstream
                     b.Navigation("ChildEmployee");
 
+=======
+>>>>>>> Stashed changes
                     b.Navigation("OvertimeData");
                 });
 
             modelBuilder.Entity("Overtime_API.Models.OvertimeApplication", b =>
                 {
                     b.Navigation("Activities");
+<<<<<<< Updated upstream
 
                     b.Navigation("Limitations");
+=======
+>>>>>>> Stashed changes
                 });
 
             modelBuilder.Entity("Overtime_API.Models.OvertimeData", b =>

@@ -7,12 +7,17 @@ using System.Threading.Tasks;
 
 namespace Overtime_API.Models
 {
+<<<<<<< Updated upstream
     [Table("TB_M_Limitation")]
+=======
+    [Table("Tb_T_Limitation")]
+>>>>>>> Stashed changes
     public class Limitation
     {
         [Key]
         public int LimitationID { get; set; }
 
+<<<<<<< Updated upstream
         [Required(ErrorMessage = "Must be filled")]
         public string LimitationName { get; set; }
 
@@ -23,5 +28,10 @@ namespace Overtime_API.Models
         public int OvertimeApplicationID { get; set; }
 
         public virtual OvertimeApplication OvertimeApplication { get; set; }
+=======
+        public string LimitationName { get; set; }
+
+        public int Value { get; set; }
+>>>>>>> Stashed changes
     }
 }

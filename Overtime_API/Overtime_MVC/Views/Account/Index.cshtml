@@ -1,0 +1,116 @@
+﻿<!-- Login -->
+<div class="container">
+    <div class="col-lg-6 m-5">
+        <div class=" card" style="margin-left:250px; width:550px">
+            <div class="card-body m-2">
+                <div class="p-3">
+                    <h4 class="text-muted font-18 m-b-2 text-center">Welcome</h4>
+                    <span style="text-align: center;" class="fa fa-pencil" aria-hidden="true"></span>
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="email">Email</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </div>
+                                <input type="email" id="Email" class="form-control" name="Email" placeholder="Input your email address" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">Password</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">
+                                        <i style="top:20px" class="fas fa-key"></i>
+                                    </span>
+                                </div>
+                                <input type="password" id="Password" class="form-control" name="Password" placeholder="Input your password" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                <i id="showHide" class="fas fa-eye-slash" style="cursor:pointer; position: absolute; top:25%; right: 10px;"></i>
+                            </div>
+                        </div>
+                        <div class="mb-1 text-right">
+                            <a data-toggle="modal" data-target="#forgotpassword" class="text-right text-decoration-none" style="cursor: pointer">
+                                Forgot Password?
+                            </a>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3" form="loginForm" style="width:100%">Login</button>
+                        <h5 class="mt-2 text-center">or</h5>
+                        <button type="button" class="btn btn-primary mt-2" form="registerForm" style="width:100%">Register</button>
+
+                        <!-- Modal Forgot Password -->
+                        <div class="modal fade" id="forgotpassword" tabindex="-1" role="dialog" aria-labelledby="forgotpasswordTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalTitle">Reset Password</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="inputGroup-sizing-default">
+                                                    <i class="fas fa-envelope"></i>
+                                                </span>
+                                            </div>
+                                            <input type="email" id="resetpassword" class="form-control" name="email" placeholder="Input your email address" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary" data-dismiss="modal" id="sendEmail">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+            $("#showHide").click(function () {
+                $(this).toggleClass("fa-eye-slash fa-eye");
+                var type = $(this).hasClass("fa-eye") ? "text" : "password";
+                $("#Password").attr("type", type);
+        });
+    $("#loginForm").validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
+                required: true
+            }
+        },
+        submitHandler: function (form) {
+            var form = $(form);
+            var urlString = "login"
+            $.ajax({
+                type: "POST",
+                url: urlString,
+                data: form.serialize(),
+                success: function (data) {
+                    sessionStorage.token = data['token'];
+                    if (data['token'] != null) {
+                        window.location.href = "@Url.Action("Index", "Person")";
+                    }
+                    else {
+                        Swal.fire(
+                            'Failed!',
+                            'Incorrect!',
+                            'Error'
+                        )
+                    }
+                }
+            })
+        }
+    })
+    </script>
+}

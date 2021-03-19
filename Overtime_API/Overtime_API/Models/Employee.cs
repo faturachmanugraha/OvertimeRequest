@@ -36,13 +36,19 @@ namespace Overtime_API.Models
         public int PositionID { get; set; }
 
 #nullable enable
+<<<<<<< Updated upstream
         public string? NIKManager { get; set; }
+=======
+        [ForeignKey(nameof(Manager))]
+        public string? ManagerNIK { get; set; }
+>>>>>>> Stashed changes
 #nullable disable
 
         public int ClientID { get; set; }
         public int DepartmentID { get; set; }
         public int OvertimeID { get; set; }
 
+        public virtual Employee Manager { get; set; }
 
         public virtual OvertimeData OvertimeData { get; set; }
         public virtual Position Position { get; set; }

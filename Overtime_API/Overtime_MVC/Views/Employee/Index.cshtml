@@ -1,0 +1,187 @@
+﻿
+@{
+    ViewData["Title"] = "Employee";
+}
+
+<h1>Employee</h1>
+
+<div id="modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modal-title-id" class="modal-title">Create Person</h4>
+                <button class="close" data-dismiss="modal" style="color:red">&times;</button>
+            </div>
+            <form id="form">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="NIK">NIK</label>
+                        <input type="text" class="form-control" name="NIK" id="NIK" placeholder="NIK" />
+                    </div>
+                    <div class="form-group">
+                        <label for="FirstName">FirstName</label>
+                        <input type="text" class="form-control" name="FirstName" id="FirstName" placeholder="FirstName" />
+                    </div>
+                    <div class="form-group">
+                        <label for="LastName">LastName</label>
+                        <input type="text" class="form-control" name="LastName" id="LastName" placeholder="LastName" />
+                    </div>
+                    <div class="form-group">
+                        <label for="BirthDate">Birth Date</label>
+                        <input type="date" class="form-control" name="BirthDate" id="BirthDate" placeholder="BirthDate" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input type="text" class="form-control" name="Email" id="Email" placeholder="Email" />
+                        <span class="field-validation-valid" style="color:red" data-valmsg-for="Email" data-valmsg-replace="true" id="spanEmail"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Phone">Phone</label>
+                        <input type="text" class="form-control" name="Phone" id="Phone" placeholder="Phone" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Salary">Salary</label>
+                        <input type="text" class="form-control" name="Salary" id="Salary" placeholder="Salary" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Position">Position</label>
+                        <input type="text" class="form-control" name="Position" id="Position" placeholder="Position" />
+                    </div>
+                    <div class="form-group">
+                        <label for="ManagerNIK">Manager NIK</label>
+                        <input type="text" class="form-control" name="ManagerNIK" id="ManagerNIK" placeholder="ManagerNIK" />
+                    </div>
+                    <div class="form-group">
+                        <label for="ClientID">Client ID</label>
+                        <input type="text" class="form-control" name="ClientID" id="ClientID" placeholder="ClientID" />
+                    </div>
+                    <div class="form-group">
+                        <label for="DepartmentID">Department ID</label>
+                        <input type="text" class="form-control" name="DepartmentID" id="DepartmentID" placeholder="DepartmentID" />
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn btn-success" type="submit" form="form" id="btnSubmit">Submit</button>
+                <button class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="btn btn-info" data-toggle="modal" data-target="#modal">Button Modal</div>
+
+@section Scripts{ 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tablePerson').DataTable({
+                language: {
+                    searchPlaceholder: "Search..."
+                },
+                "filter": true,
+                "orderMulti": false,
+                lengthMenu: [[5, 10, -1], [5, 10, "All"]],
+                dom: 'Bfrltip',
+                buttons: [
+                    {
+                        extend: 'csv',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    'colvis'
+                ],
+                ajax: {
+                    url: 'Person/Get',
+                    type: 'GET',
+                    datatype: 'json',
+                    dataSrc: 'result',
+                    "beforeSend": function (xhr) {
+                        xhr.setRequestHeader('Authorization', sessionStorage.token);
+                    }
+                },
+                columnDefs: [
+                    {
+                        targets: 1,
+                        visible: false
+                    },
+                    {
+                        targets: [2, 3],
+                        searchable: true
+                    },
+                    {
+                        targets: '_all',
+                        searchable: false
+                    },
+                    {
+                        targets: [0, 4, 7],
+                        orderable: false
+                    }
+                ],
+                order: [
+                    [1, 'asc']
+                ],
+                columns: [
+                    {
+                        "data": 'no',
+                        "defaultContent": ' '
+                    },
+                    { data: 'nik' },
+                    {
+                        "data": 'name',
+                        "render": function (data, type, row, meta) {
+                            return row['firstName'] + ' ' + row['lastName'];
+                        }
+                    },
+                    {
+                        data: 'phone',
+                        render: function (data) {
+                            var str = data;
+                            var re = /^0/;
+                            if (re.test(data)) {
+                                str = str.replace(re, "+62")
+                            }
+                            return str;
+                        }
+                    },
+                    {
+                        data: 'birthDate',
+                        render: function (data) {
+                            return moment(data).format('DD/MM/YYYY');
+                        }
+                    },
+                    {
+                        data: 'salary',
+                        render: $.fn.dataTable.render.number(',', '.', 2, 'Rp. ')
+                    },
+                    { data: 'email' },
+                    {
+                        data: 'id',
+                        render: function (data, type, row, meta) {
+                            return '<a class="btn btn-success" data-toggle="tooltip" data-placement="top" style="margin-right:5px" title="Edit" onclick="Get(\'' + row['nik'] + '\')"><i class ="fa fa-edit"></i> Edit</a>'
+                                + '<button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete" onclick="Delete(\'' + row['nik'] + '\')"><i class ="fa fa-trash"></i> Delete</button>'
+                        }
+                    }
+                ]
+            });
+            table.on('order.dt search.dt', function () {
+                table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+                    cell.innerHTML = i + 1;
+                    table.cell(cell).invalidate('dom');
+                });
+            }).draw();
+        });
+    </script>
+}
